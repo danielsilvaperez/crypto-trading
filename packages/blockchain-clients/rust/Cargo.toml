@@ -1,0 +1,48 @@
+[package]
+name = "blockchain-clients"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <you@example.com>"]
+description = "Reusable blockchain clients for DeFi and exchanges"
+license = "MIT"
+repository = "https://github.com/yourusername/crypto-trading"
+keywords = ["blockchain", "ethereum", "defi", "trading", "polymarket"]
+categories = ["cryptography::cryptocurrencies", "web-programming"]
+
+[features]
+default = ["evm", "polymarket"]
+evmp = ["ethers", "url"]
+solana = ["solana-client", "solana-sdk"]
+polymarket = ["reqwest", "serde_json"]
+kalshi = ["reqwest", "rsa", "sha2"]
+all = ["evm", "solana", "polymarket", "kalshi"]
+
+[dependencies]
+# Core
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+tracing = "0.1"
+chrono = "0.4"
+async-trait = "0.1"
+
+# EVM
+ethers = { version = "2.0", optional = true }
+url = { version = "2.0", optional = true }
+
+# Solana
+solana-client = { version = "1.17", optional = true }
+solana-sdk = { version = "1.17", optional = true }
+
+# HTTP clients
+reqwest = { version = "0.11", features = ["json"], optional = true }
+
+# Authentication
+rsa = { version = "0.9", features = ["sha2"], optional = true }
+sha2 = { version = "0.10", optional = true }
+serde_json = { version = "1.0", optional = true }
+
+[dev-dependencies]
+tokio-test = "0.4"
+mockall = "0.12"
+wiremock = "0.6"
