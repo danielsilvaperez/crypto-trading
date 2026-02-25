@@ -1,0 +1,27 @@
+[package]
+name = "telegram-control"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <you@example.com>"]
+description = "Reusable Telegram bot framework for crypto trading"
+license = "MIT"
+repository = "https://github.com/yourusername/crypto-trading"
+keywords = ["telegram", "bot", "trading", "crypto"]
+categories = ["web-programming"]
+
+[dependencies]
+teloxide = { version = "0.13", features = ["macros", "webhooks"] }
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+tracing = "0.1"
+chrono = "0.4"
+async-trait = "0.1"
+
+[dev-dependencies]
+tokio-test = "0.4"
+mockall = "0.12"
+
+[features]
+default = []
+webhooks = ["teloxide/webhooks"]
