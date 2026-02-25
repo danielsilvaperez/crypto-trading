@@ -1,0 +1,18 @@
+[package]
+name = "risk-management"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <you@example.com>"]
+description = "Risk management library for algorithmic trading"
+license = "MIT"
+repository = "https://github.com/yourusername/crypto-trading"
+keywords = ["trading", "risk", "finance", "algorithmic-trading"]
+
+[dependencies]
+chrono = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+tracing = "0.1"
+
+[dev-dependencies]
+tokio-test = "0.4"
