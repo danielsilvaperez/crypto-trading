@@ -1,0 +1,62 @@
+[workspace]
+members = [
+    "packages/telegram-control/rust",
+    "packages/blockchain-clients/rust",
+    "packages/risk-management/rust",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+repository = "https://github.com/yourusername/crypto-trading"
+rust-version = "1.75"
+
+[workspace.dependencies]
+# Core async
+tokio = { version = "1.35", features = ["full"] }
+async-trait = "0.1"
+futures = "0.3"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# HTTP
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+
+# Testing
+tokio-test = "0.4"
+mockall = "0.12"
+wiremock = "0.6"
+
+# Telegram (teloxide)
+teloxide = { version = "0.13", features = ["macros", "webhooks"] }
+
+# Blockchain
+ethers = { version = "2.0", features = ["rustls", "ws"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
